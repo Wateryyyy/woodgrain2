@@ -1,12 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import AIImage from "../public/assets/images/aisite.png";
 import NativeImage from "../public/assets/images/native.png";
 import YoomImage from "../public/assets/images/yoom.png";
+import ImageModal from "./ImageModal"; // Import the modal component
 
 const ProjectsSection = () => {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    const openModal = (image: string) => {
+        setSelectedImage(image);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
     return (
         <div className="bg-white text-black mt-20">
             <div className="container p-8 mx-auto">
@@ -23,10 +36,11 @@ const ProjectsSection = () => {
                         <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
                             <Image
                                 src={AIImage}
-                                className="mb-5 px-4"
-                                alt="Project Image 1"
+                                className="mb-5 px-4 cursor-zoom-in"
+                                alt="AI Landing Page"
                                 width={500}
                                 height={250}
+                                onClick={() => openModal(AIImage.src)}
                             />
                             <h1 className="text-2xl font-bold">AI Landing Page</h1>
                             <p className="text-lg text-black/80 p-8">
@@ -37,12 +51,12 @@ const ProjectsSection = () => {
                                 ability to deliver high-quality, visually appealing web
                                 solutions.
                             </p>
-                            <div className="flex flex-row gap-14">
+                            <div className="flex flex-row gap-8 px-6">
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
                                     <Link href="/">Live Website</Link>
                                 </button>
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="/">Source Code</Link>
+                                    <Link href="https://github.com/Wateryyyy/saas-landing">Source Code</Link>
                                 </button>
                             </div>
                         </div>
@@ -51,10 +65,11 @@ const ProjectsSection = () => {
                         <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
                             <Image
                                 src={NativeImage}
-                                className="mb-5 px-4"
-                                alt="Project Image 1"
+                                className="mb-5 px-4 cursor-zoom-in"
+                                alt="Native Marine Detailing"
                                 width={500}
                                 height={250}
+                                onClick={() => openModal(NativeImage.src)}
                             />
                             <h1 className="text-2xl font-bold">Native Marine Detailing</h1>
                             <p className="text-lg text-black/80 p-8">
@@ -65,12 +80,12 @@ const ProjectsSection = () => {
                                 WoodGrain's skill in creating tailored, visually appealing web
                                 solutions for niche markets.
                             </p>
-                            <div className="flex flex-row gap-14">
+                            <div className="flex flex-row gap-8 px-6">
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="/">Live Website</Link>
+                                    <Link href="https://nativemarinedetail.com/">Live Website</Link>
                                 </button>
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="/">Source Code</Link>
+                                    <Link href="https://github.com/Wateryyyy/nativemarinedetail">Source Code</Link>
                                 </button>
                             </div>
                         </div>
@@ -79,10 +94,11 @@ const ProjectsSection = () => {
                         <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
                             <Image
                                 src={YoomImage}
-                                className="mb-5 px-4"
-                                alt="Project Image 1"
+                                className="mb-5 px-4 cursor-zoom-in"
+                                alt="Yoom - ZOOM Clone"
                                 width={500}
                                 height={250}
+                                onClick={() => openModal(YoomImage.src)}
                             />
                             <h1 className="text-2xl font-bold">Yoom - ZOOM Clone</h1>
                             <p className="text-lg text-black/80 p-8">
@@ -93,18 +109,24 @@ const ProjectsSection = () => {
                                 WoodGrain's expertise in building scalable, user-friendly
                                 communication platforms, and tools.
                             </p>
-                            <div className="flex flex-row gap-14">
+                            <div className="flex flex-row gap-8 px-6">
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="/">Live Website</Link>
+                                    <Link href="https://conference-pearl.vercel.app">Live Website</Link>
                                 </button>
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="/">Source Code</Link>
+                                    <Link href="https://github.com/Wateryyyy/conference">Source Code</Link>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <ImageModal
+                src={selectedImage!}
+                alt="Selected Project Image"
+                isOpen={selectedImage !== null}
+                onClose={closeModal}
+            />
         </div>
     );
 };

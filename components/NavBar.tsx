@@ -22,8 +22,8 @@ const NavBar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/components" aria-label="Components">
-                                    Components
+                                <Link href="/" aria-label="Home">
+                                    Features
                                 </Link>
                             </li>
                             <li>
@@ -31,7 +31,7 @@ const NavBar = () => {
                                     Pricing
                                 </Link>
                             </li>
-                            <li>
+                            <li className='bg-[#26152f] px-3 py-2 rounded-lg text-white'>
                                 <Link href="/contact" aria-label="Contact">
                                     Contact
                                 </Link>

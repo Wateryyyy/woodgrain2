@@ -3,6 +3,7 @@ import React from "react";
 import { IoSparklesSharp } from "react-icons/io5";
 import PlanetImage from '../public/assets/images/planet.png'
 import GalaxyImage from '../public/assets/images/Galaxy.png'
+import { motion } from "framer-motion"
 
 const HeroSection = () => {
     return (
