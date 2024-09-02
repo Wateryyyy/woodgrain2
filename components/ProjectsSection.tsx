@@ -51,8 +51,8 @@ const ProjectsSection = () => {
                                 ability to deliver high-quality, visually appealing web
                                 solutions.
                             </p>
-                            <div className="flex flex-row gap-8 px-6">
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
+                            <div className="flex flex-col lg:flex-row gap-4 px-6">
+                                <button className="bg-[#26152f] text-white px-6 py-2 rounded-full">
                                     <Link href="/">Live Website</Link>
                                 </button>
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
@@ -80,7 +80,7 @@ const ProjectsSection = () => {
                                 WoodGrain's skill in creating tailored, visually appealing web
                                 solutions for niche markets.
                             </p>
-                            <div className="flex flex-row gap-8 px-6">
+                            <div className="flex flex-col lg:flex-row gap-4 px-6">
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
                                     <Link href="https://nativemarinedetail.com/">Live Website</Link>
                                 </button>
@@ -109,7 +109,7 @@ const ProjectsSection = () => {
                                 WoodGrain's expertise in building scalable, user-friendly
                                 communication platforms, and tools.
                             </p>
-                            <div className="flex flex-row gap-8 px-6">
+                            <div className="flex flex-col lg:flex-row gap-4 px-6">
                                 <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
                                     <Link href="https://conference-pearl.vercel.app">Live Website</Link>
                                 </button>

@@ -14,14 +14,20 @@ const ImageModal: React.FC<ImageModalProps> = ({ src, alt, isOpen, onClose }) =>
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-            <div className="relative">
+            <div className="relative p-4">
                 <button
                     onClick={onClose}
-                    className="absolute -top-10 -right-2 text-red-700 text-3xl"
+                    className="absolute -top-4 right-4 text-red-400 text-2xl md:text-3xl"
                 >
-                    <IoMdClose className="w-8 h-8" />
+                    <IoMdClose className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
-                <Image src={src} alt={alt} className="max-w-full max-h-screen" width={1200} height={100} />
+                <Image
+                    src={src}
+                    alt={alt}
+                    className="max-w-full max-h-full object-contain"
+                    width={1080}
+                    height={1920}
+                />
             </div>
         </div>
     );

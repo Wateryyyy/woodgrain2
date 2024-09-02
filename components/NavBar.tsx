@@ -11,7 +11,7 @@ const NavBar = () => {
                 <div className="flex justify-between items-center">
                     <div>
                         <Link href='/'>
-                            <Image src={Logo} alt="Logo NavBar" width={300} height={100} priority />
+                            <Image src={Logo} alt="Logo NavBar" width={220} height={100} priority />
                         </Link>
                     </div>
                     <div className='flex flex-row items-center'>
