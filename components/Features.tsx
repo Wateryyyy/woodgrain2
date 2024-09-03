@@ -50,7 +50,7 @@ const Features = () => {
     ];
 
     return (
-        <div className='bg-white text-black mt-36'>
+        <div id='features' className='bg-white text-black mt-36'>
             <div className='container p-4 md:p-8 mx-auto'>
                 <div className="flex items-center justify-center mb-6">
                     <span className="bg-[linear-gradient(to_right,#F87BFF,#26152f,#F87BFF)] text-transparent bg-clip-text text-lg md:text-1xl font-semibold">

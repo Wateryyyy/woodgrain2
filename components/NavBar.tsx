@@ -22,7 +22,7 @@ const NavBar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/" aria-label="Home">
+                                <Link href="/#features" aria-label="Home">
                                     Features
                                 </Link>
                             </li>
