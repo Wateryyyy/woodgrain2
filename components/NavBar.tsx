@@ -31,6 +31,11 @@ const NavBar = () => {
                                     Pricing
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/careers" aria-label="Pricing">
+                                    Careers
+                                </Link>
+                            </li>
                             <li className='bg-[#26152f] px-3 py-2 rounded-lg text-white'>
                                 <Link href="/contact" aria-label="Contact">
                                     Contact
