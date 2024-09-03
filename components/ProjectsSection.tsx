@@ -23,7 +23,7 @@ const ProjectsSection = () => {
     return (
         <div className="bg-white text-black mt-36">
             <div className="container p-8 mx-auto">
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mb-6">
                     <span className="bg-[linear-gradient(to_right,#F87BFF,#26152f,#F87BFF)] text-transparent bg-clip-text text-lg md:text-1xl font-semibold">
                         We make beauty come alive
                     </span>

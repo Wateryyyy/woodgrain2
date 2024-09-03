@@ -29,7 +29,7 @@ const HeroSection = () => {
             <div className=" container mx-auto px-6 lg:px-8 text-center z-50">
                 <div className="flex justify-center">
                     <span className="text-sm bg-[linear-gradient(to_right,#F87BFF,#C2F0B1,#2FD8FE)] `rounded-[calc(1.5rem-1px)]` rounded-full p-0.5 text-gray-600 mb-5">
-                        <div className="flex flex-row items-center gap-2 h-full bg-white py-2 px-8 rounded-full">
+                        <div className="flex flex-row items-center gap-2 h-full bg-white py-2 px-4 rounded-full">
                             <IoSparklesSharp />
                             <p>
                                 Introducing WoodGrain AI - <a className="font-bold text-black underline underline-offset-4" href="/">Try Demo</a>
@@ -38,7 +38,7 @@ const HeroSection = () => {
                     </span>
                 </div>
                 <div className="flex justify-center items-center">
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-white md:text-black">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-white md:text-black">
                         Your business <br /> Beautifully Online
                     </h1>
                 </div>
