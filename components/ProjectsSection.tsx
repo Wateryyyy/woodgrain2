@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import Image from "next/image";
@@ -8,9 +7,14 @@ import AIImage from "../public/assets/images/aisite.png";
 import NativeImage from "../public/assets/images/native.png";
 import YoomImage from "../public/assets/images/yoom.png";
 import ImageModal from "./ImageModal"; // Import the modal component
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const ProjectsSection = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const { scrollYProgress } = useScroll();
+
+    // Parallax effect for heading text
+    const parallaxX = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
     const openModal = (image: string) => {
         setSelectedImage(image);
@@ -21,106 +25,80 @@ const ProjectsSection = () => {
     };
 
     return (
-        <div className="bg-white text-black mt-36">
-            <div className="container p-8 mx-auto">
-                <div className="flex items-center justify-center mb-6">
-                    <span className="bg-[linear-gradient(to_right,#F87BFF,#26152f,#F87BFF)] text-transparent bg-clip-text text-lg md:text-1xl font-semibold">
-                        We make beauty come alive
-                    </span>
-                </div>
-                <h1 className="text-5xl font-bold text-center mb-10">
-                    Who we work with
-                </h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center text-center gap-14 mx-auto max-w-7xl">
-                    <div className="bg-[linear-gradient(to_right,#F87BFF,#C2F0B1,#2FD8FE)] rounded-md p-[0.1rem]">
-                        <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
+        <div className="bg-white text-black mt-36 relative">
+            {/* Background Gradient for Visual Depth */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-30 z-[-1]" />
+
+            <div className="container flex flex-col mx-auto justify-center items-center px-8">
+                <motion.div
+                    className="text-center mb-16"
+                >
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-transparent bg-clip-text text-lg md:text-xl font-semibold">
+                            We make beauty come alive
+                        </span>
+                    </motion.div>
+                    <motion.h1
+                        className="text-5xl font-bold mt-4"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2 }}
+                    >
+                        Who we work with
+                    </motion.h1>
+                </motion.div>
+
+                {/* Projects Section with Staggered Scroll Animations */}
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl items-center mx-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false }}
+                    variants={{
+                        visible: {
+                            opacity: 1,
+                            transition: { staggerChildren: 0.3 },
+                        },
+                        hidden: { opacity: 0 },
+                    }}
+                >
+                    {[
+                        { src: AIImage, title: "AI Landing Page", link: "/", buttonColor: "bg-purple-600" },
+                        { src: NativeImage, title: "Native Marine Detailing", link: "https://nativemarinedetail.com/", buttonColor: "bg-teal-600" },
+                        { src: YoomImage, title: "Yoom - ZOOM Clone", link: "https://conference-pearl.vercel.app", buttonColor: "bg-pink-600" }
+                    ].map((project, index) => (
+                        <motion.div
+                            key={index}
+                            className="relative group"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.5 }}
+                            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 50 } }}
+                        >
                             <Image
-                                src={AIImage}
-                                className="mb-5 px-4 cursor-zoom-in"
-                                alt="AI Landing Page"
-                                width={500}
-                                height={250}
-                                onClick={() => openModal(AIImage.src)}
+                                src={project.src}
+                                alt={project.title}
+                                width={600}
+                                height={350}
+                                className="rounded-lg shadow-lg cursor-pointer object-cover"
+                                onClick={() => openModal(project.src.src)}
                             />
-                            <h1 className="text-2xl font-bold">AI Landing Page</h1>
-                            <p className="text-lg text-black/80 p-8">
-                                WoodGrain developed a dark-themed AI SaaS landing page that
-                                combines sleek design with user-focused functionality. The site
-                                highlights the platform's capabilities while reflecting the
-                                brand's modern aesthetic. This project showcases WoodGrain's
-                                ability to deliver high-quality, visually appealing web
-                                solutions.
-                            </p>
-                            <div className="flex flex-col lg:flex-row gap-4 px-6">
-                                <button className="bg-[#26152f] text-white px-6 py-2 rounded-full">
-                                    <Link href="/">Live Website</Link>
-                                </button>
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="https://github.com/Wateryyyy/saas-landing">Source Code</Link>
-                                </button>
+                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center rounded-lg">
+                                <h2 className="text-white text-2xl font-bold">{project.title}</h2>
+                                <Link href={project.link}>
+                                    <button className={`${project.buttonColor} text-white px-4 py-2 mt-4 rounded-lg`}>
+                                        Live Website
+                                    </button>
+                                </Link>
                             </div>
-                        </div>
-                    </div>
-                    <div className="bg-[linear-gradient(to_right,#F87BFF,#C2F0B1,#2FD8FE)] rounded-md p-[0.1rem]">
-                        <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
-                            <Image
-                                src={NativeImage}
-                                className="mb-5 px-4 cursor-zoom-in"
-                                alt="Native Marine Detailing"
-                                width={500}
-                                height={250}
-                                onClick={() => openModal(NativeImage.src)}
-                            />
-                            <h1 className="text-2xl font-bold">Native Marine Detailing</h1>
-                            <p className="text-lg text-black/80 p-8">
-                                WoodGrain crafted a site for Native Marine Detailing, a boat
-                                detailing and rental company. The site showcases their services
-                                with a clean, nautical design, enhancing user experience and
-                                reflecting the brand's coastal vibe. This project highlights
-                                WoodGrain's skill in creating tailored, visually appealing web
-                                solutions for niche markets.
-                            </p>
-                            <div className="flex flex-col lg:flex-row gap-4 px-6">
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="https://nativemarinedetail.com/">Live Website</Link>
-                                </button>
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="https://github.com/Wateryyyy/nativemarinedetail">Source Code</Link>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-[linear-gradient(to_right,#F87BFF,#C2F0B1,#2FD8FE)] rounded-md p-[0.1rem]">
-                        <div className="bg-white rounded-md flex flex-col justify-center items-center py-8">
-                            <Image
-                                src={YoomImage}
-                                className="mb-5 px-4 cursor-zoom-in"
-                                alt="Yoom - ZOOM Clone"
-                                width={500}
-                                height={250}
-                                onClick={() => openModal(YoomImage.src)}
-                            />
-                            <h1 className="text-2xl font-bold">Yoom - ZOOM Clone</h1>
-                            <p className="text-lg text-black/80 p-8">
-                                WoodGrain developed Yoom, a Zoom clone designed for seamless
-                                video conferencing. The platform features a clean, intuitive
-                                interface with robust functionality, offering users a reliable
-                                alternative for virtual meetings. This project underscores
-                                WoodGrain's expertise in building scalable, user-friendly
-                                communication platforms, and tools.
-                            </p>
-                            <div className="flex flex-col lg:flex-row gap-4 px-6">
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="https://conference-pearl.vercel.app">Live Website</Link>
-                                </button>
-                                <button className="bg-[#26152f] text-white px-4 py-2 rounded-full">
-                                    <Link href="https://github.com/Wateryyyy/conference">Source Code</Link>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
+
             <ImageModal
                 src={selectedImage!}
                 alt="Selected Project Image"

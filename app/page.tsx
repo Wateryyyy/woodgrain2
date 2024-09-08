@@ -8,6 +8,7 @@ import Banner from "@/components/Banner";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
+import BlogSection from "@/components/BlogSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ProjectsSection />
       <Features />
       <Testimonials />
+      <BlogSection />
       <Footer />
     </>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import React from "react";
 import { IoSparklesSharp } from "react-icons/io5";
@@ -37,10 +38,11 @@ const HeroSection = () => {
                         </div>
                     </span>
                 </div>
-                <div className="flex justify-center items-center">
+                <div className="flex flex-col justify-center items-center">
                     <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-white md:text-black">
                         Your business <br /> Beautifully Online
                     </h1>
+                    <p className="mb-5 text-black/70">Don't hassle with boring website builders let us save you valuble time</p>
                 </div>
                 <div className="flex justify-center space-x-4">
                     <button className="bg-[#26152f] shadow-[0_0_30px_rgba(255,255,255,0.5)] rounded-full text-white px-4 py-3 sm:px-6 sm:py-3 font-bold">
